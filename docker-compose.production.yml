@@ -1,5 +1,4 @@
 # Запуск Kittygram из готовых образов с Docker Hub.
-# Замените username на свой логин на Docker Hub.
 volumes:
   pg_data:
   static:
@@ -12,7 +11,7 @@ services:
     volumes:
       - pg_data:/var/lib/postgresql/data
   backend:
-    image: username/kittygram_backend:latest
+    image: drobad/kittygram_backend:latest
     env_file: .env
     depends_on:
       - db
@@ -20,13 +19,13 @@ services:
       - static:/backend_static
       - media:/media
   frontend:
-    image: username/kittygram_frontend:latest
+    image: drobad/kittygram_frontend:latest
     env_file: .env
     command: cp -r /app/build/. /static/
     volumes:
       - static:/static
   gateway:
-    image: username/kittygram_gateway:latest
+    image: drobad/kittygram_gateway:latest
     env_file: .env
     depends_on:
       - backend

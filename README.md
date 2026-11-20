@@ -25,9 +25,9 @@ Kittygram — социальная сеть для любителей котик
 | Контейнер  | Образ                         | Назначение                                  |
 |------------|-------------------------------|---------------------------------------------|
 | `db`       | `postgres:13`                 | База данных                                 |
-| `backend`  | `username/kittygram_backend`  | Django + Gunicorn, порт 8000                |
-| `frontend` | `username/kittygram_frontend` | Сборка React, копирует файлы в volume static |
-| `gateway`  | `username/kittygram_gateway`  | Nginx, порт 9000 → 80                       |
+| `backend`  | `drobad/kittygram_backend`  | Django + Gunicorn, порт 8000                |
+| `frontend` | `drobad/kittygram_frontend` | Сборка React, копирует файлы в volume static |
+| `gateway`  | `drobad/kittygram_gateway`  | Nginx, порт 9000 → 80                       |
 
 Volumes:
 
@@ -82,8 +82,7 @@ Nginx проксирует `/api/` и `/admin/` в контейнер `backend`,
 
 ### Запуск из готовых образов Docker Hub
 
-В файле `docker-compose.production.yml` замените `username` на свой логин на
-Docker Hub, затем выполните:
+Образы опубликованы на Docker Hub под логином `drobad`. Выполните:
 
 ```bash
 docker compose -f docker-compose.production.yml -p kittygram up -d
